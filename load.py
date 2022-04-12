@@ -116,7 +116,6 @@ def CSVtoList(path):
             if char == ";": # Jika karakter ";", pindah kolom
                 j += 1
             else:
-                
                 csv_list[i][j] += char # Isi kolom
 
     return csv_list # Return list
