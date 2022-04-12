@@ -108,7 +108,7 @@ def CSVtoList(path):
     n_col = countColumn(csv_file[0]) 
     
     # Inisialisasi list
-    csv_list = [["" for i in range(n_row)] for j in range(n_col)]
+    csv_list = [["" for i in range(n_col)] for j in range(n_row)]
 
     for i in range(n_row): # Untuk setiap baris 
         j = 0
@@ -116,6 +116,7 @@ def CSVtoList(path):
             if char == ";": # Jika karakter ";", pindah kolom
                 j += 1
             else:
+                
                 csv_list[i][j] += char # Isi kolom
 
     return csv_list # Return list
