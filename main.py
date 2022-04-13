@@ -12,6 +12,8 @@ from help import printHelp
 from load import loadData, isFolderExist, printWelcome
 from save import saveAllData
 from exit import exitApp
+from login import loginApp
+from register import registerUser
 
 # Loading data
 if isFolderExist(): # Jika folder ada, maka load data dari folder tersebut
@@ -28,14 +30,15 @@ else: # Jika folder tidak ada, langsung exit aplikasi
 isLoggedIn = False
 isAdmin = False
 
-# Masuk ke program interaktif
+# Masuk ke program 
 while True:
     func = input("") # Input perintah dari pengguna
 
     if func == "register":
-        ...
+        registerUser(user)
     elif func == "login":
-        ...
+        if loginApp(user):
+            isLoggedIn = True
     elif func == "tambah_game":
         ...
     elif func == "ubah_game":
