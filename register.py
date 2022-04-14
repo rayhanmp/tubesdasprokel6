@@ -7,7 +7,6 @@ def counter(item):
     return count
 
 def cekChar(uname):
-    charValid = False
     i = 0
     count = 0
     while i < counter(uname):
@@ -31,11 +30,8 @@ def cekUnik(uname, user):
         return True
     else:
         return False
-    
-    
 
-def registerUser(user):
-
+def registerUser(add):
     name = input("Masukan nama: ")
     uname = input("Masukan username: ")
     password = input("Masukan password: ")
