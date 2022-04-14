@@ -99,5 +99,7 @@ def listToCSV(data):
             else: # Selanjutnya, tambahkan ";" di awal sebagai pemisah kolom
                 csv_list[i] += ";" + col
                 j += 1
+        # Tambahkan line break di akhir 
+        csv_list[i] += "\n"
 
     return csv_list # Return list
