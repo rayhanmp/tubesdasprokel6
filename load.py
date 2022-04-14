@@ -9,6 +9,7 @@
 # Import modul yang diperlukan
 import argparse
 import os
+from turtle import back
 
 try:
     parser = argparse.ArgumentParser(
@@ -51,6 +52,7 @@ def loadData(f):
     folder = args.folder_name # Nama folder dari argument parser
 
     path = folder + "/" + f # Path file data yang ingin di load
+    print(CSVtoList(path), "\n")
     return CSVtoList(path) # Return list yang sudah dikonversi oleh fungsi CSVtoList
 
 
@@ -71,6 +73,29 @@ def countColumn(row):
             count += 1
     return count
 
+def backspace(str, r):
+    # Menghapus r(int) karakter terakhir dari string
+    # I.S : sebuah string dan integer r
+    # F.S : string yang sudah dihapus sebanyak r(int) karakter terakhirnya
+
+    # Kamus Lokal
+    # length, i, j: int
+    # new_str: string
+
+    # Algoritma
+    length = 0
+    for i in str: # Cari panjang
+        length += 1
+    
+    new_str = "" # Inisialisasi string baru
+    for j in range(length):
+        # Isi string baru sampai sebelum r elemen terakhir
+        if j >= length-r:
+            break
+        else : new_str += str[j] 
+    
+    # Return string baru
+    return new_str
 
 def countRow(list):
     # Menghitung panjang / banyaknya baris pada csv
@@ -100,7 +125,7 @@ def CSVtoList(path):
     # csv_list : list of (list of string)
 
     # Algoritma
-    f = open(path, "r") # Buka file sesuai path
+    f = open(path, "r", encoding='utf-8-sig') # Buka file sesuai path
     csv_file = f.readlines() # Baca isinya dalam bentuk list
 
     # Hitung banyak baris dan kolom
@@ -117,6 +142,8 @@ def CSVtoList(path):
                 j += 1
             else:
                 csv_list[i][j] += char # Isi kolom
+        # Clean line break (\n) dari csv
+        csv_list[i][n_col-1] = backspace(csv_list[i][n_col-1], 1)
 
     return csv_list # Return list
 
