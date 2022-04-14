@@ -52,7 +52,6 @@ def loadData(f):
     folder = args.folder_name # Nama folder dari argument parser
 
     path = folder + "/" + f # Path file data yang ingin di load
-    print(CSVtoList(path), "\n")
     return CSVtoList(path) # Return list yang sudah dikonversi oleh fungsi CSVtoList
 
 
