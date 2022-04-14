@@ -9,7 +9,6 @@
 # Import modul yang diperlukan
 import argparse
 import os
-from turtle import back
 
 try:
     parser = argparse.ArgumentParser(
