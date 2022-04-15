@@ -6,25 +6,28 @@ def kerangajaib():
     # F.S : Sebuah jawaban (Iya, Tidak, Mungkin, atau Bisa jadi)
 
     # Kamus Lokal
-    # count, n_row, n_col : int
-    # f : file di directory
-    # csv_file : list of string (comma-delimited)
-    # csv_list : list of (list of string)
+    # a, b, m, x : int
+    # start_time : float
+    # pertanyaan : string
 
     # Algoritma
+    # Input pertanyaan (Tidak berpengaruh)
     pertanyaan = input("Apa pertanyaanmu? ")
-    start_time = time.time()
+    start_time = time.time()  # Waktu program memulai
 
+    # Konstanta yang digunakan untuk Linear congruential generator
+    a = 9   # Penentuan konstanta memiliki syarat : b dan m saling prima, a-1 habis dibagi semua faktor prima m,
+    b = 3   # dan jika m habis dibagi 4, a-1 harus habis dibagi 4
+    m = 4   # m adalah periode pengacakan (m = 4, berarti ada 4 kemungkinan angka)
 
-    a = 9
-    b = 3
-    m = 4
-
+    # Nilai angka random
     x = 0
-    count = 0
-    while (start_time + 1) > time.time():
-        x = (x*a + b) % m 
+    while (start_time + 1) > time.time():  # Selama 1 detik belum terlewati
+        # Rumus LCG yang akan menghasilkan x = 0, 1, 2, 3 secara periodik
+        # Nilai x akan random tergantung performa komputer dalam 1 detik
+        x = (x*a + b) % m
 
+    # Output berdasarkan angka yang sudah di randomized
     if x == 0:
         print("Iya")
     elif x == 1:
@@ -33,4 +36,3 @@ def kerangajaib():
         print("Bisa jadi")
     elif x == 3:
         print("Tidak")
-
