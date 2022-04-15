@@ -154,6 +154,13 @@ def printWelcome():
     # Kamus Lokal -
     
     # Algoritma
-    print("""Loading...\n
+    print("""Loading...
+  ____  _   _ __  __  ____  
+ |  _ \| \ | |  \/  |/ __ \ 
+ | |_) |  \| | \  / | |  | |
+ |  _ <| . ` | |\/| | |  | |
+ | |_) | |\  | |  | | |__| |
+ |____/|_| \_|_|  |_|\____/ 
+                     
 Hi! BNMO here! Mau apa hari ini?
 Ketik \"help\" jika perlu bantuan\n""")
