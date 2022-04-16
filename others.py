@@ -1,5 +1,7 @@
+# Import modul yang diperlukan
 import time
 
+# Realisasi Fungsi dan Prosedur
 def kerangajaib():
     # Menjawab semua pertanyaan hidup (secara random)
     # I.S : Sebuah pertanyaan
@@ -40,6 +42,17 @@ def kerangajaib():
 
 
 def tictactoe():
+    # Bermain permainan favorit Doni : tic tac toe
+    # I.S : Permainan dimulai
+    # F.S : Permainan berakhir dengan kemenangan atau seri
+
+    # Kamus Lokal
+    # board : list of (list of string)
+    # turn, X, Y : integer
+    # gameEnded : boolean
+
+    # Algoritma
+    # Interface Awal Permainan
     print("""
   _______ _        _______           _______         
  |__   __(_)      |__   __|         |__   __|        
@@ -53,60 +66,80 @@ Legenda:
 X Pemain 1
 O Pemain 2""")
 
-    board = [["#" for i in range(3)] for i in range(3)]
-    turn = 1
-    gameEnded = False
+    # Inisialisasi
+    board = [["#" for i in range(3)] for i in range(3)] # Papan kosong
+    turn = 1 # Turn
+    gameEnded = False # boolean untuk menentukan kondisi game
 
-    while not gameEnded:
+    while not gameEnded: # Selama permainan belum berakhir
+        # Tunjukkan status papan
         printBoard(board)
 
+        # Tentukan giliran pemain
         if turn % 2 == 0:
             player = "O"
         else:
             player = "X"
 
-        while True:
+        while True: # Validasi input sampai benar
             print(f"\nGiliran Pemain {player}")
+
+            # Input posisi x dan y
             Y = int(input("Baris: "))
             X = int(input("Kolom: "))
 
-            if not 1 <= X <= 3 or not 1 <= Y <= 3:
+            # Validasi
+            if not 1 <= X <= 3 or not 1 <= Y <= 3: # Input diluar range
                 print("\nKotak tidak valid.")
                 continue
-            if board[Y-1][X-1] != "#":
+            if board[Y-1][X-1] != "#": # Input di kotak yang terisi
                 print("\nKotak sudah terisi. Silakan pilih kotak lain.")
                 continue
-            else:
+            else: # Input benar
                 board[Y-1][X-1] = player
-                turn += 1
-                break
-
-        gameEnded = isGameEnded(board)
+                turn += 1 # Tambah turn
+                break # Keluar dari loop
+        # Check status game, apakah sudah berakhir atau belum
+        gameEnded = isGameEnded(board) # Jika true, permainan berakhir
 
 def isGameEnded(board):
-    for i in range(3):
+    # Mengecek apakah permainan tic-tac-toe sudah berakhir
+    # I.S : Sebuah papan -> list of (list of string)
+    # F.S : Boolean yang menyatakan apakah permainan sudah berakhir
 
+    # Kamus Lokal
+    # board : list of (list of string)
+    # i, j : integer
+
+    # Algoritma
+    for i in range(3):
+        # Cek untuk setiap baris, apakah ada 3 X/O beruntun 
         if board[i][0] == board[i][1] == board[i][2] and board[i][0] != "#":
             printBoard(board)
             print(f"\n{board[i][0]} menang secara horizontal")
             return True
 
+        # Cek untuk setiap kolom, apakah ada 3 X/O beruntun 
         if board[0][i] == board[1][i] == board[2][i] and board[0][i] != "#":
             printBoard(board)
             print(f"\n{board[0][i]} menang secara vertikal")
             return True
 
+        # Cek untuk setiap diagonal, apakah ada 3 X/O beruntun
         if (board[0][0] == board[1][1] == board[2][2] or board[0][2] == board[1][1] == board[2][0]):
             if board[1][1] != "#":
                 printBoard(board)
                 print(f"\n{board[1][1]} menang secara diagonal")
                 return True
 
+    # Cek jika semua petak sudah terisi
     for i in range(3):
         for j in range(3):
-            if board[i][j] == "#":
+            if board[i][j] == "#": # Jika ditemukan petak kosong, maka game belum berakhir
                 return False
-            if i == j == 2:
+            # Jika sampai iterasi terakhir ([i][j] == [2][2]) tidak ada "#"
+            # Maka permainan berakhir seri (karena kondisi menang sudah dicek diatas) 
+            if i == j == 2: 
                 printBoard(board)
                 print(f"\nPermainan berakhir Seri")
                 return True
@@ -114,6 +147,15 @@ def isGameEnded(board):
     return False 
 
 def printBoard(board):
+    # Mencetak papan ke layar
+    # I.S : Sebuah papan -> list of (list of string)
+    # F.S : Papan sudah tercetak di layat
+
+    # Kamus Lokal
+    # board : list of (list of string)
+    # i : integer
+
+    # Algoritma
     print("\n=========== STATUS PAPAN ===========")
-    for i in range(3):
+    for i in range(3): # Print setiap baris 
             print(board[i][0] + board[i][1] + board[i][2])
