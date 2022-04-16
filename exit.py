@@ -17,11 +17,11 @@ def exitApp(user, game, riwayat, kepemilikan):
     while True: # Meminta input sampai valid
         print("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n)")
         option = input("")
-
-        if option in "Yy": # Jika input Y/y, simpan data
+ 
+        if option == "Y" or option == "y": # Jika input Y/y, simpan data
             saveAllData(user, game, riwayat, kepemilikan)
             break
-        elif option in "Nn": # Jika input N/n, langsung keluar tanpa simpan data
+        elif option == "N" or option == "n": # Jika input N/n, langsung keluar tanpa simpan data
             break
         else: # Input tidak valid
             continue

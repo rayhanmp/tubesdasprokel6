@@ -154,7 +154,7 @@ def printWelcome():
     # Kamus Lokal -
     
     # Algoritma
-    print("""Loading...
+    print("""Beep, Beep...
   ____  _   _ __  __  ____  
  |  _ \| \ | |  \/  |/ __ \ 
  | |_) |  \| | \  / | |  | |
@@ -162,5 +162,5 @@ def printWelcome():
  | |_) | |\  | |  | | |__| |
  |____/|_| \_|_|  |_|\____/ 
                      
-Hi! BNMO here! Mau apa hari ini?
-Ketik \"help\" jika perlu bantuan\n""")
+Halo! BNMO disini! Mau apa hari ini?
+Ketik \"help\" jika perlu bantuan""")

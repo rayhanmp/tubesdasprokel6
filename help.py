@@ -7,7 +7,9 @@
 # ALGORITMA
 # String yang berisi list fungsi yang dapat diakses sebelum login
 preLoginHelp = """1. login - Melakukan login ke dalam aplikasi
-2. help - Memunculkan list fungsi yang dapat diakses\n"""
+2. help - Memunculkan list fungsi yang dapat diakses
+3. kerangajaib - Menjawab semua pertanyaanmu
+4. tictactoe - Minum coklat panas, bermain tictactoe"""
 
 # String yang berisi list fungsi yang dapat diakses oleh admin 
 adminHelp = """1. register - Melakukan registrasi user baru
@@ -20,7 +22,9 @@ adminHelp = """1. register - Melakukan registrasi user baru
 8. topup - Menambahkan saldo kepada user
 9. help - Memunculkan list fungsi yang dapat diakses
 10. save - Menyimpan perubahan data di aplikasi
-11. exit - Keluar dari aplikasi\n"""
+11. exit - Keluar dari aplikasi
+12. kerangajaib - Menjawab semua pertanyaanmu
+13. tictactoe - Minum coklat panas, bermain tictactoe"""
 
 # String yang berisi list fungsi yang dapat diakses oleh user
 userHelp = """1. login - Untuk melakukan login ke dalam sistem
@@ -32,7 +36,9 @@ userHelp = """1. login - Untuk melakukan login ke dalam sistem
 7. riwayat - Melihat riwayat pembelian
 8. help - Memunculkan list fungsi yang dapat diakses
 9. save - Menyimpan perubahan data di aplikasi
-10. exit - Keluar dari aplikasi\n"""
+10. exit - Keluar dari aplikasi
+11. kerangajaib - Menjawab semua pertanyaanmu
+12. tictactoe - Minum coklat panas, bermain tictactoe"""
 
 # Fungsi dan Prosedur
 def printHelp(isLoggedIn, isAdmin):
