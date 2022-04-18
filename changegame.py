@@ -49,7 +49,7 @@ def ubahGame(game):
     price = (input("Masukan harga: "))
 
     # Ganti informasi elemen pada list game, row sesuai index, dan kolom 1, 2, 3, 4
-    if name != "":
+    if name != "": # Cek apakah input kosong
         game[index][1] = str(name)
     
     if category !="":
@@ -60,5 +60,7 @@ def ubahGame(game):
 
     if price != "":
         game[index][4] = str(price)
+
+    return game # Kembalikan list of list berisi string game
 
         

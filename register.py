@@ -1,4 +1,5 @@
 from load import countRow
+from addgame import konso
 
 def counter(item):
     count = 0
@@ -31,27 +32,20 @@ def cekUnik(uname, user):
     else:
         return False
 
-def registerUser(add):
+def registerUser(user):
     name = input("Masukan nama: ")
     uname = input("Masukan username: ")
     password = input("Masukan password: ")
 
     n_row = countRow(user)
-    used = False
+    id = str(n_row)
     if cekUnik:
         if cekChar:
-            data = []
-            data = data + [(n_row+1)]
-            data = data + [uname]
-            data = data + [name]
-            data = data + [password]
-            data = data + ["user"]
-            data = data + [0]
-            user = user + [data]
-            print(user)
+            data = [id, uname, name, password, "user", "0"]
+            newData = (konso(data, user))
             print("Username", uname, "telah berhasil register ke dalam “Binomo”.")
         else:
             print("Username mengandung karakter illegal.")
     else:
         print("Username", uname, "sudah terpakai, silakan menggunakan username lain.")
-    return user
+    return newData

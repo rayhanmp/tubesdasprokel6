@@ -37,17 +37,16 @@ isAdmin = False
 while True:
     func = input("\n") # Input perintah dari pengguna
     if func == "register":
-        registerUser(user)
+        user = registerUser(user)
     elif func == "login":
         isLoggedIn, index = loginApp(user)
         if isLoggedIn == True:
             if cekAdmin(user, index):
                 isAdmin = True
-
     elif func == "tambah_game":
-        addGame(game)
+        game = addGame(game)
     elif func == "ubah_game":
-        ubahGame(game)
+        game = ubahGame(game)
     elif func == "ubah_stok":
         ...
     elif func == "list_game_toko":
