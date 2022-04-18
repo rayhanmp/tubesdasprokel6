@@ -10,6 +10,7 @@
 # Import modul yang diperlukan
 from help import printHelp
 from load import loadData, isFolderExist, printWelcome
+from others import kerangajaib, tictactoe
 from save import saveAllData
 from exit import exitApp
 from login import loginApp, cekAdmin
@@ -34,7 +35,7 @@ isAdmin = False
 
 # Masuk ke program 
 while True:
-    func = input("") # Input perintah dari pengguna
+    func = input("\n") # Input perintah dari pengguna
     if func == "register":
         registerUser(user)
     elif func == "login":
@@ -66,10 +67,14 @@ while True:
     elif func == "help":
         printHelp(isLoggedIn, isAdmin)
     elif func == "save":
-        user = registerUser(user)
+        # user = registerUser(user)
         saveAllData(user, game, riwayat, kepemilikan)
     elif func == "exit":
         exitApp(user, game, riwayat, kepemilikan)        
+    elif func == "kerangajaib":
+        kerangajaib()
+    elif func == "tictactoe":
+        tictactoe()
     else: # Perintah tidak tersedia
         print(f"Maaf. Perintah {func} tidak dikenali. Coba ketikkan \"help\" untuk " 
         "melihat daftar perintah yang dapat digunakan")
