@@ -2,7 +2,7 @@
 # Modul untuk melakukan proses save data ke dalam folder tertentu
 
 # Import modul yang diperlukan
-from load import countRow
+from primitives import countRow
 import os
 
 # Fungsi dan Prosedur
@@ -94,10 +94,10 @@ def listToCSV(data):
         j = 0
         for col in data[i]: # Untuk setiap kolom di baris
             if j == 0: # Di awal, isi baris dengan data saja
-                csv_list[i] += col
+                csv_list[i] += str(col)
                 j += 1
             else: # Selanjutnya, tambahkan ";" di awal sebagai pemisah kolom
-                csv_list[i] += ";" + col
+                csv_list[i] += ";" + str(col)
                 j += 1
         # Tambahkan line break di akhir 
         csv_list[i] += "\n"

@@ -9,6 +9,7 @@
 # Import modul yang diperlukan
 import argparse
 import os
+from primitives import countRow
 
 try:
     parser = argparse.ArgumentParser(
@@ -94,22 +95,6 @@ def backspace(str, r):
     
     # Return string baru
     return new_str
-
-def countRow(list):
-    # Menghitung panjang / banyaknya baris pada csv
-    # I.S : sebuah list of string
-    # F.S : panjang / jumlah baris pada list tersebut
-
-    # Kamus Lokal
-    # count : int
-
-    # Algoritma
-    count = 0
-    for i in list:
-        # Pada setiap baris di list, count ditambah 1
-        count += 1
-    return count
-
 
 def CSVtoList(path):
     # Konversi file csv ke dalam list python

@@ -1,5 +1,4 @@
-from load import countRow
-from addgame import konso
+from primitives import countRow, konso
 
 def counter(item):
     count = 0
