@@ -19,7 +19,7 @@ def cari_game_5(game):
     tahun = str(input('Masukkan Tahun Rilis Game: '))
     harga = str(input('Masukkan Harga Game: '))
 
-    i = 0
+    i = 1
     baris = primitives.countRow(game)
     Cek = False
 

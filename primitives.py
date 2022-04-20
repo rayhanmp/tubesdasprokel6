@@ -41,8 +41,8 @@ def isPermitted(isLoggedIn, isAdmin, allowedRole):
             return False
 
 def countRow(list):
-    # Menghitung panjang / banyaknya baris pada csv
-    # I.S : sebuah list of string
+    # Menghitung panjang / banyaknya baris pada list
+    # I.S : sebuah list
     # F.S : panjang / jumlah baris pada list tersebut
 
     # Kamus Lokal
@@ -69,8 +69,8 @@ def konso(add,targetList):
 
     # Masukan isi targetList ke dalam list sementara
     for i in range(countRow(targetList)): 
-        for j in range(countRow(targetList[0])):
-            temp[i][j] = targetList[i][j] # Ganti elemen dengan index yang bersesuaian
+            for j in range(countRow(targetList[0])):
+                temp[i][j] = targetList[i][j] # Ganti elemen dengan index yang bersesuaian
     
     # Masukan isi data baru ke dalam list kosong dalam temp
     for j in range(countRow(targetList[0])):

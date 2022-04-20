@@ -1,28 +1,34 @@
 # Program BNMO
-# ...
+# Program BNMO adalah sebuah program 
 
 # Kamus
 # isLoggedIn, isAdmin : boolean
 # func : string
+# userId : integer
 # user, game, riwayat, kepemilikan : list of (list of string)
 
 # Algoritma Program
 # Import modul yang diperlukan
-from riwayat import riwayat_beli
-from help import printHelp
+from primitives import isPermitted
 from load import loadData, isFolderExist, printWelcome
-from others import kerangajaib, tictactoe
-from save import saveAllData
-from exit import exitApp
-from login import loginApp, cekAdmin
 from register import registerUser
-from changegame import ubahGame
+from login import loginApp, cekAdmin
 from addgame import addGame
+from changegame import ubahGame
+from buy_game import buy_game
+from ubah_stok import ubah_stok
+from store_game import list_game_toko
+from buy_game import buy_game
+from user_game import list_game
 from search_my_game import cari_game
-from search_game_at_store import cari_game_5
+from search_store import cari_game_5
+from riwayat import riwayat_beli
 from topup import TopUp
 from riwayat import riwayat_beli
-from primitives import isPermitted
+from help import printHelp
+from save import saveAllData
+from exit import exitApp
+from bonuses import kerangajaib, tictactoe
 
 # Loading data
 if isFolderExist(): # Jika folder ada, maka load data dari folder tersebut
@@ -46,7 +52,7 @@ while True:
     # REGISTER
     if func == "register":
         if isPermitted(isLoggedIn, isAdmin, "login/admin"): # Validasi untuk Permission
-            registerUser(user)
+            user = registerUser(user)
 
     # LOGIN
     elif func == "login":
@@ -59,7 +65,7 @@ while True:
     elif func == "tambah_game":
         # Validasi untuk Permission (harus login dan harus admin)
         if isPermitted(isLoggedIn, isAdmin, "login/admin"):
-            addGame(game)    
+            game = addGame(game)    
 
     # UBAH GAME  
     elif func == "ubah_game":
@@ -67,15 +73,30 @@ while True:
         if isPermitted(isLoggedIn, isAdmin, "login/admin"):
             ubahGame(game)
     
+    # UBAH STOK
     elif func == "ubah_stok":
-        ...
-    elif func == "list_game_toko":
-        ...
-    elif func == "buy_game":
-        ...
-    elif func == "list_game":
-        ...
+        # Validasi untuk Permission (harus login dan harus admin)
+        if isPermitted(isLoggedIn, isAdmin, "login/admin"):
+            game = ubah_stok(game)
 
+    # LIST GAME DI TOKO
+    elif func == "list_game_toko":
+        # Validasi untuk Permission (harus login dan bisa user/admin)
+        if isPermitted(isLoggedIn, isAdmin, "login/both"):
+            list_game_toko(game)
+
+    # BELI GAME
+    elif func == "buy_game":
+        # Validasi untuk Permission (harus login dan harus user)
+        if isPermitted(isLoggedIn, isAdmin, "login/user"):
+            kepemilikan, user, riwayat = buy_game(userId, game, user, kepemilikan, riwayat)
+
+    # LIST GAME YANG DIMILIKI
+    elif func == "list_game":
+        # Validasi untuk Permission (harus login dan harus user)
+        if isPermitted(isLoggedIn, isAdmin, "login/user"):
+            list_game(kepemilikan, game, userId)
+        
     # CARI GAME YANG DIMILIKI
     elif func == "search_my_game":
         # Validasi untuk Permission (harus login dan harus user)

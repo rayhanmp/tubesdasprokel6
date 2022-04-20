@@ -13,7 +13,7 @@ def addGame(game):
     # ALGORITMA
     name, category, year, price, stock = inputGame()
     n_row = countRow(game) # Hitung n_row
-    id = ("G"+f"{(n_row+1):03}") # Hitung Field ID Game
+    id = ("G"+f"{(n_row):03}") # Hitung Field ID Game
 
     # Buat list dan lakukan penggabungan
     data = [id, name, category, year, price, stock] # Buat list berisi ID dan input
@@ -39,7 +39,7 @@ def inputGame():
     # Validasi apakah input benar, jika tidak, ulangi
     # While digunakan karena dapat bertindak sebagai pembatas (jika kondisi tidak terpenuhi, tidak dijalankan)
     while name == "" or category == "" or year == "" or price == "" or stock == "":
-        print("Mohon masukkan semua informasi mengenai game agar dapat disimpan BNMO.")
+        print("\nMohon masukkan semua informasi mengenai game agar dapat disimpan BNMO.")
         name = input("Masukan nama game: ")
         category = input("Masukan kategori: ")
         year = input("Masukan tahun rilis: ")

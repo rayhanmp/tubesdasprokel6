@@ -64,11 +64,23 @@ def printHelp(isLoggedIn, isAdmin):
 
 
 def printNotLoggedIn():
+    # Mencetak error akibat pengguna belum login
+    # F.S : pesan error tercetak
+
+    # Algoritma
     print("Maaf, anda harus login terlebih dahulu untuk mengirim perintah selain “login”")
 
 
 def printNotAdmin():
+    # Mencetak error akibat pengguna bukan admin
+    # F.S : pesan error tercetak
+
+    # Algoritma
     print("Maaf, anda tidak memiliki izin untuk menjalankan perintah berikut. Mintalah ke administrator untuk melakukan hal tersebut.")
 
 def printNotUser():
+    # Mencetak error akibat pengguna bukan user
+    # F.S : pesan error tercetak
+
+    # Algoritma
     print("Maaf, anda harus menjadi user untuk melakukan hal tersebut.")
