@@ -11,7 +11,7 @@ preLoginHelp = """1. login - Melakukan login ke dalam aplikasi
 3. kerangajaib - Menjawab semua pertanyaanmu
 4. tictactoe - Minum coklat panas, bermain tictactoe"""
 
-# String yang berisi list fungsi yang dapat diakses oleh admin 
+# String yang berisi list fungsi yang dapat diakses oleh admin
 adminHelp = """1. register - Melakukan registrasi user baru
 2. login - Melakukan login ke dalam aplikasi
 3. tambah_game - Menambah game yang dijual pada toko
@@ -41,6 +41,8 @@ userHelp = """1. login - Untuk melakukan login ke dalam sistem
 12. tictactoe - Minum coklat panas, bermain tictactoe"""
 
 # Fungsi dan Prosedur
+
+
 def printHelp(isLoggedIn, isAdmin):
     # Mencetak list fungsi yang dapat diakses oleh user atau admin
     # I.S : status login dan role user
@@ -48,14 +50,37 @@ def printHelp(isLoggedIn, isAdmin):
 
     # Kamus Lokal
     # isLoggedIn, isAdmin : boolean (status user)
-    
+
     # Algoritma
     print("=========== PERINTAH UNTUK BNMO ===========")
 
-    if not isLoggedIn: # user belum login
+    if not isLoggedIn:  # user belum login
         print(preLoginHelp)
     else:
-        if isAdmin: #Jika admin, tampilkan list fungsi admin
+        if isAdmin:  # Jika admin, tampilkan list fungsi admin
             print(adminHelp)
-        else: #Jika user, tampilkan list fungsi user
+        else:  # Jika user, tampilkan list fungsi user
             print(userHelp)
+
+
+def printNotLoggedIn():
+    # Mencetak error akibat pengguna belum login
+    # F.S : pesan error tercetak
+
+    # Algoritma
+    print("Maaf, anda harus login terlebih dahulu untuk mengirim perintah selain “login”")
+
+
+def printNotAdmin():
+    # Mencetak error akibat pengguna bukan admin
+    # F.S : pesan error tercetak
+
+    # Algoritma
+    print("Maaf, anda tidak memiliki izin untuk menjalankan perintah berikut. Mintalah ke administrator untuk melakukan hal tersebut.")
+
+def printNotUser():
+    # Mencetak error akibat pengguna bukan user
+    # F.S : pesan error tercetak
+
+    # Algoritma
+    print("Maaf, anda harus menjadi user untuk melakukan hal tersebut.")

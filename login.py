@@ -1,4 +1,4 @@
-from load import countRow
+from primitives import countRow
 
 def loginApp(user):
     # Memvalidasi input username dan password dari user

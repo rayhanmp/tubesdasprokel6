@@ -1,4 +1,4 @@
-from load import countRow
+from primitives import countRow
 
 def getIndexGame(game, id_game):
     # Mencari index urutan row game di list game berdasarkan ID Game

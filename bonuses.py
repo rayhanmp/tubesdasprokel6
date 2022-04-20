@@ -138,7 +138,7 @@ def isGameEnded(board):
             if board[i][j] == "#": # Jika ditemukan petak kosong, maka game belum berakhir
                 return False
             # Jika sampai iterasi terakhir ([i][j] == [2][2]) tidak ada "#"
-            # Maka permainan berakhir seri (karena kondisi menang sudah dicek diatas) 
+            # Maka permainan berakhir seri (kondisi menang sudah dicek diatas) 
             if i == j == 2: 
                 printBoard(board)
                 print(f"\nPermainan berakhir Seri")

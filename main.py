@@ -1,22 +1,34 @@
 # Program BNMO
-# ...
+# Program BNMO adalah sebuah program 
 
 # Kamus
 # isLoggedIn, isAdmin : boolean
 # func : string
+# userId : integer
 # user, game, riwayat, kepemilikan : list of (list of string)
 
 # Algoritma Program
 # Import modul yang diperlukan
-from help import printHelp
+from primitives import isPermitted
 from load import loadData, isFolderExist, printWelcome
-from others import kerangajaib, tictactoe
+from register import registerUser
+from login import loginApp, cekAdmin
+from addgame import addGame
+from changegame import ubahGame
+from buy_game import buy_game
+from ubah_stok import ubah_stok
+from store_game import list_game_toko
+from buy_game import buy_game
+from user_game import list_game
+from search_my_game import cari_game
+from search_store import cari_game_5
+from riwayat import riwayat_beli
+from topup import TopUp
+from riwayat import riwayat_beli
+from help import printHelp
 from save import saveAllData
 from exit import exitApp
-from login import loginApp, cekAdmin
-from register import registerUser
-from changegame import ubahGame
-from addgame import addGame
+from bonuses import kerangajaib, tictactoe
 
 # Loading data
 if isFolderExist(): # Jika folder ada, maka load data dari folder tersebut
@@ -36,44 +48,104 @@ isAdmin = False
 # Masuk ke program 
 while True:
     func = input("\n") # Input perintah dari pengguna
+
+    # REGISTER
     if func == "register":
-        user = registerUser(user)
+        if isPermitted(isLoggedIn, isAdmin, "login/admin"): # Validasi untuk Permission
+            user = registerUser(user)
+
+    # LOGIN
     elif func == "login":
-        isLoggedIn, index = loginApp(user)
+        isLoggedIn, userId = loginApp(user)
         if isLoggedIn == True:
-            if cekAdmin(user, index):
+            if cekAdmin(user, userId):
                 isAdmin = True
+
+    # TAMBAH GAME
     elif func == "tambah_game":
-        game = addGame(game)
+        # Validasi untuk Permission (harus login dan harus admin)
+        if isPermitted(isLoggedIn, isAdmin, "login/admin"):
+            game = addGame(game)    
+
+    # UBAH GAME  
     elif func == "ubah_game":
-        game = ubahGame(game)
+        # Validasi untuk Permission (harus login dan harus admin)
+        if isPermitted(isLoggedIn, isAdmin, "login/admin"):
+            ubahGame(game)
+    
+    # UBAH STOK
     elif func == "ubah_stok":
-        ...
+        # Validasi untuk Permission (harus login dan harus admin)
+        if isPermitted(isLoggedIn, isAdmin, "login/admin"):
+            game = ubah_stok(game)
+
+    # LIST GAME DI TOKO
     elif func == "list_game_toko":
-        ...
+        # Validasi untuk Permission (harus login dan bisa user/admin)
+        if isPermitted(isLoggedIn, isAdmin, "login/both"):
+            list_game_toko(game)
+
+    # BELI GAME
     elif func == "buy_game":
-        ...
+        # Validasi untuk Permission (harus login dan harus user)
+        if isPermitted(isLoggedIn, isAdmin, "login/user"):
+            kepemilikan, user, riwayat = buy_game(userId, game, user, kepemilikan, riwayat)
+
+    # LIST GAME YANG DIMILIKI
     elif func == "list_game":
-        ...
+        # Validasi untuk Permission (harus login dan harus user)
+        if isPermitted(isLoggedIn, isAdmin, "login/user"):
+            list_game(kepemilikan, game, userId)
+        
+    # CARI GAME YANG DIMILIKI
     elif func == "search_my_game":
-        ...
+        # Validasi untuk Permission (harus login dan harus user)
+        if isPermitted(isLoggedIn, isAdmin, "login/user"):
+            cari_game(game, kepemilikan, userId)
+
+    # CARI GAME DI TOKO
     elif func == "search_game_at_store":
-        ...
+        # Validasi untuk Permission (harus login dan bisa user/admin)
+        if isPermitted(isLoggedIn, isAdmin, "login/both"):
+            cari_game_5(game)
+
+    # TOPUP
     elif func == "topup":
-        ...
+        # Validasi untuk Permission (harus login dan harus admin)
+        if isPermitted(isLoggedIn, isAdmin, "login/admin"):
+            user = TopUp(user)
+
+    # RIWAYAT PEMBELIAN
     elif func == "riwayat":
-        ...
+        # Validasi untuk Permission (harus login dan harus user)
+        if isPermitted(isLoggedIn, isAdmin, "login/user"):   
+            riwayat_beli(riwayat, userId)
+
+    # HELP
     elif func == "help":
+        # Tidak perlu validasi
         printHelp(isLoggedIn, isAdmin)
+
+    # SAVE
     elif func == "save":
-        # user = registerUser(user)
+        # Tidak perlu validasi
         saveAllData(user, game, riwayat, kepemilikan)
+
+    # EXIT
     elif func == "exit":
+        # Tidak perlu validasi
         exitApp(user, game, riwayat, kepemilikan)        
+
+    # KERANG AJAIB
     elif func == "kerangajaib":
+        # Tidak perlu validasi
         kerangajaib()
+
+    # TIC TAC TOE
     elif func == "tictactoe":
+        # Tidak perlu validasi
         tictactoe()
+
     else: # Perintah tidak tersedia
         print(f"Maaf. Perintah {func} tidak dikenali. Coba ketikkan \"help\" untuk " 
         "melihat daftar perintah yang dapat digunakan")
