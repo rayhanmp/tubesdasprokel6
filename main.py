@@ -1,5 +1,15 @@
 # Program BNMO
-# Program BNMO adalah sebuah program 
+
+# DESKRIPSI PROGRAM
+# Program BNMO adalah sebuah platform yang dibuat untuk mengorganisasi koleksi video game. 
+
+# BATASAN
+# Pengguna dapat membuat akun untuk kemudian melihat-lihat game di toko.
+# Pengguna dapat membeli game dari toko tersebut dengan topup saldo mereka.
+# Pengguna harus melakukan save agar data game yang dibeli tersimpan ke dalam library secara permanen.
+# Admin memiliki keleluasaan untuk menambah, mengubah, ataupun mengurangi game di toko.
+
+# CATATAN : Gunakan folder encrypt_data untuk menjalankan program dan lihat init_data untuk password yang benar
 
 # Kamus
 # isLoggedIn, isAdmin : boolean

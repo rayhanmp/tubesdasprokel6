@@ -1,4 +1,6 @@
+from bonuses import decrypt
 from primitives import countRow
+
 
 def loginApp(user):
     # Memvalidasi input username dan password dari user
@@ -23,7 +25,7 @@ def loginApp(user):
 
     # Validasi username dan isLoggedIn hasil input pada list user
     while i < (n_row) and isLoggedIn == False: # Jika i lebih kecil dari n_row dan isLoggedIn bernilai false
-            if user[i][1] == username and user[i][3] == password: # Jika elemen pada row ke-i, kolom kedua dan keempat berturut-turut sama dengan input username dan password
+            if user[i][1] == username and decrypt(user[i][3]) == password: # Jika elemen pada row ke-i, kolom kedua dan keempat berturut-turut sama dengan input username dan password
                 print("Halo", str(user[i][2])+"!", "Selamat datang di","Binomo")
                 isLoggedIn = True # Ubah nilai isLoggedIn untuk menghentikan loop
                 index = i # Ubah nilai index menjadi i terakhir

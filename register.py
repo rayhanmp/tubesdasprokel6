@@ -1,3 +1,4 @@
+from bonuses import encrypt
 from primitives import countRow, konso
 
 def counter(item):
@@ -85,9 +86,9 @@ def registerUser(user):
 
     if cekUnik(uname, user): # Cek apakah username unik
         if cekChar(uname): # Cek apakah karakter pada username diperbolehkan
-
+            
             # Sudah melewati validasi, data user bisa ditambahkan ke list data
-            data = [id, uname, name, password, "user", "0"]
+            data = [id, uname, name, encrypt(password), "user", "0"]
             newData = (konso(data, user))
             print("Username", uname, "telah berhasil register ke dalam “Binomo”.")
             return newData 
