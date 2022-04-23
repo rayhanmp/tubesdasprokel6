@@ -103,7 +103,7 @@ def CSVtoList(path):
 
     # Kamus Lokal
     # count, n_row, n_col : int
-    # f : file di directory
+    # f : SEQFILE of string
     # csv_file : list of string (comma-delimited)
     # csv_list : list of (list of string)
 

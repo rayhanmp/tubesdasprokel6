@@ -7,34 +7,6 @@ import os
 
 # Fungsi dan Prosedur
 
-
-def createDir(folder):
-    # Membuat folder di directory
-    # I.S : sebuah directory
-    # F.S : folder baru terbentuk di directory
-
-    # Kamus Lokal -
-    # Algoritma
-    os.mkdir(f"./{folder}")  # Buat dengan library os
-
-
-def deleteDir(folder):
-    # Menghapus sebuah folder di directory
-    # I.S : folder data di directory
-    # F.S : folder terhapus dari directory
-
-    # Kamus Lokal
-    # dir : list of string
-    # f : string
-
-    # Algoritma
-    dir = os.listdir(f"./{folder}")  # Buka folder directory
-    for f in dir:  # Hapus setiap file di folder sampai kosong
-        os.remove(f"./{folder}/{f}")
-
-    os.rmdir(f"./{folder}")  # Hapus folder yang sudah kosong tersebut
-
-
 def saveData(folder, data, filename):
     # Menyimpan sebuah file data ke folder
     # I.S : list data, nama file, dan folder yang ingin dituju
@@ -64,10 +36,9 @@ def saveAllData(user, game, riwayat, kepemilikan):
     folder = input("Masukkan nama folder penyimpanan: ")  # Input nama folder
     
     print("\nSaving...")
-    if os.path.exists(folder): # Jika folder sudah ada, hapus folder untuk di overwrite
-        deleteDir(folder)
-
-    createDir(folder) # Buat folder data yang diinginkan
+    if not os.path.exists(folder): # Belum ada foldernya
+        os.mkdir(folder)  # Buat dengan library os
+    
     # Save masing-masing data ke dalam folder tersebut
     saveData(folder, user, "user.csv")
     saveData(folder, game, "game.csv")
