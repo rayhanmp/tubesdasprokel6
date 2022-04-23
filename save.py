@@ -13,7 +13,7 @@ def saveData(folder, data, filename):
     # F.S : file data terbentuk di folder
 
     # Kamus Lokal
-    # f : file di directory
+    # f : SEQFILE of string
     # csv_list : list of string (dengan format comma delimited seperti csv)
 
     # Algoritma
