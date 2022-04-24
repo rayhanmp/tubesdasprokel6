@@ -1,23 +1,6 @@
 from bonuses import encrypt
 from primitives import countRow, konso
 
-def counter(item):
-    # Menghitung panjang item
-    # I.S : item berupa list atau string
-    # F.S : panjang dari item tersebut
-
-    # Kamus Lokal
-    # count : integer
-    # element : any
-
-    # Algoritma
-    count = 0
-    # Hitung banyak elemen
-    for element in item:
-        count += 1
-    return count  # return
-
-
 def cekChar(uname):
     # Mengecek apakah input username tidak mengandung karakter ilegal
     # I.S : string username
@@ -39,7 +22,7 @@ def cekChar(uname):
             i += 1
 
     
-    if count == counter(uname): # Semua karakter terhitung legal
+    if count == countRow(uname): # Semua karakter terhitung legal
         return True
     else: # Ada karakter ilegal
         return False
