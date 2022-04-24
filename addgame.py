@@ -22,9 +22,9 @@ def addGame(game):
     return newData # Kembalikan list of list berisi string baru
 
 def inputGame():
-    # 
-    # 
-    # 
+    # Meminta input data game ke user dengan skema validasi berulang (hingga masukan benar)
+    # I.S : -
+    # F.S : name, category, year, price, stock berupa string
 
     # KAMUS LOKAL
 
