@@ -2,6 +2,8 @@
 import time
 
 # Realisasi Fungsi dan Prosedur
+
+# KERANG AJAIB
 def kerangajaib():
     # Menjawab semua pertanyaan hidup (secara random)
     # I.S : Sebuah pertanyaan
@@ -41,6 +43,7 @@ def kerangajaib():
         print("Tidak")
 
 
+# TIC TAC TOE
 def tictactoe():
     # Bermain permainan favorit Doni : tic tac toe
     # I.S : Permainan dimulai
@@ -149,7 +152,7 @@ def isGameEnded(board):
 def printBoard(board):
     # Mencetak papan ke layar
     # I.S : Sebuah papan -> list of (list of string)
-    # F.S : Papan sudah tercetak di layat
+    # F.S : Papan sudah tercetak di layar
 
     # Kamus Lokal
     # board : list of (list of string)
@@ -159,3 +162,108 @@ def printBoard(board):
     print("\n=========== STATUS PAPAN ===========")
     for i in range(3): # Print setiap baris 
             print(board[i][0] + board[i][1] + board[i][2])
+
+# CIPHER
+def legalcharacters():    
+    # Membuat list dari karakter-karakter yang legal untuk password
+    # I.S : -
+    # F.S : List of string dari legal characters
+
+    # Kamus Lokal
+    # characters : list of string
+    # idx : integer
+
+    # Algoritma
+    # Inisialisasi
+    characters = ["" for i in range(64)]
+    idx = 0
+
+    # Pengisian list dengan cara
+    for i in range(48, 58):
+        characters[idx] = chr(i)
+        idx += 1
+    for i in range(65, 91):
+        characters[idx] = chr(i)
+        idx += 1
+    for i in range(97, 123):
+        characters[idx] = chr(i)
+        idx += 1
+    characters[62], characters[63] = chr(95), chr(45)
+
+    # Return
+    return characters
+
+# Simpan karakter-karakter legal ke list characters
+characters = legalcharacters()
+
+def char_id(x):
+    # Mencari index suatu elemen pada list characters
+    # I.S : elemen x dan list character
+    # F.S : index suatu elemen pada list characters
+
+    # Kamus Lokal
+    # characters : list of string
+    # id : integer
+
+    # Algoritma
+    # Inisialisasi
+    id = 0
+
+    for char in characters:
+        if x == char: #Jika ketemu return id
+            return id
+        #Else
+        id += 1
+
+def encrypt(password):
+    # Mengenkripsi password dengan affice cipher
+    # I.S : string password 
+    # F.S : password yang sudah terenkripsi
+
+    # Kamus Lokal
+    # const a, b, m : integer
+    # x : integer
+    # e : float
+    # encrypted_pass : string
+
+    # Algoritma
+    # Inisialisasi affine cipher constant
+    a = 5
+    b = 9
+    m = 64
+    # Inisialisasi encrypted pass
+    encrypted_pass = ""
+    for char in password:
+        # Pengisian encrypted pass dengan metode affine chiper
+        x = char_id(char)
+        e = (a*(x) + b) % m
+        encrypted_pass += characters[int(e)]
+
+    return encrypted_pass
+
+def decrypt(encrypted_pass):
+    # Mendekripsi password dengan affice cipher
+    # I.S : string password yang terenkripsi
+    # F.S : password yang sebenarnya
+
+    # Kamus Lokal
+    # const a, b, m : integer
+    # x : integer
+    # d : float
+    # password : string
+
+    # Algoritma
+    # Inisialisasi affine cipher constant
+    a_inv = 13 # modular multipiclative inverse dari a
+    b = 9
+    m = 64
+
+    # Inisialisasi password
+    password = ""
+    for char in encrypted_pass:
+        # Pengisian decrypted pass dengan metode affine chiper
+        x = char_id(char)
+        d = (a_inv*(x-b)) % m
+        password += characters[int(d)]
+    
+    return password

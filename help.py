@@ -41,8 +41,6 @@ userHelp = """1. login - Untuk melakukan login ke dalam sistem
 12. tictactoe - Minum coklat panas, bermain tictactoe"""
 
 # Fungsi dan Prosedur
-
-
 def printHelp(isLoggedIn, isAdmin):
     # Mencetak list fungsi yang dapat diakses oleh user atau admin
     # I.S : status login dan role user

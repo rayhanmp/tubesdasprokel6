@@ -103,7 +103,7 @@ def CSVtoList(path):
 
     # Kamus Lokal
     # count, n_row, n_col : int
-    # f : file di directory
+    # f : SEQFILE of string
     # csv_file : list of string (comma-delimited)
     # csv_list : list of (list of string)
 
@@ -115,6 +115,10 @@ def CSVtoList(path):
     n_row = countRow(csv_file)
     n_col = countColumn(csv_file[0]) 
     
+    if n_row == 1: #Hanya ada headernya saja
+        print("File kosong")
+        exit() #Langsung keluar aplikasi
+        
     # Inisialisasi list
     csv_list = [["" for i in range(n_col)] for j in range(n_row)]
 
