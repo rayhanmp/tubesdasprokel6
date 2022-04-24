@@ -48,14 +48,14 @@ def buy_game(id_user, arraygame, arrayuser, arraykepemilikan, arrayriwayat):
 
                 if have_game == True: # game dimiliki user
                     print("Anda sudah memiliki game tersebut.")
-                    return arraykepemilikan, arrayuser # return array awal
+                    return arraykepemilikan, arrayuser, arrayriwayat # return array awal
 
                 else: # game tidak dimiliki user
                     # cek saldo user
                     saldo = float(arrayuser[baris][5])
                     if saldo < float(arraygame[bar][4]):
                         print("Saldo anda tidak cukup untuk membeli game tersebut.")
-                        return arraykepemilikan, arrayuser # return array awal
+                        return arraykepemilikan, arrayuser, arrayriwayat # return array awal
 
                     else: # saldo cukup
                         # cek ketermilikan game oleh user                    
@@ -70,8 +70,8 @@ def buy_game(id_user, arraygame, arrayuser, arraykepemilikan, arrayriwayat):
 
             else: # user tidak ada
                 print("ID user tidak ditemukan.")
-                return arraykepemilikan, arrayuser # return array awal
+                return arraykepemilikan, arrayuser, arrayriwayat # return array awal
 
     else: # game tidak ada
         print("ID Game tidak ditemukan.")
-        return arraykepemilikan, arrayuser # return array awal
+        return arraykepemilikan, arrayuser, arrayriwayat # return array awal
