@@ -66,10 +66,13 @@ while True:
 
     # LOGIN
     elif func == "login":
-        isLoggedIn, userId = loginApp(user)
-        if isLoggedIn == True:
-            if cekAdmin(user, userId):
-                isAdmin = True
+        if isLoggedIn == False:
+            isLoggedIn, userId = loginApp(user)
+            if isLoggedIn == True:
+                if cekAdmin(user, userId):
+                    isAdmin = True
+        else:
+            print("Anda sudah login.")
 
     # TAMBAH GAME
     elif func == "tambah_game":
